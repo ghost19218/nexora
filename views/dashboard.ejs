@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nexora Dashboard</title>
+</head>
+
+<body style="margin:0;background:#0b0f19;color:white;font-family:Arial;">
+
+  <div style="padding:20px;background:#111827;display:flex;justify-content:space-between;">
+    <h2>Nexora Trade</h2>
+    <div>Welcome, <%= user.email %></div>
+  </div>
+
+  <div style="padding:20px;">
+
+    <h1>Balance: $<%= user.balance %></h1>
+
+    <h3>Buy Demo Stock</h3>
+
+    <form method="POST" action="/buy">
+      <input name="amount" placeholder="Amount to invest" style="padding:10px;width:200px;">
+      <button style="padding:10px 20px;">Buy</button>
+    </form>
+
+    <h3>Portfolio</h3>
+
+    <ul>
+      <% user.portfolio.forEach(p => { %>
+        <li>
+          Stock: <%= p.stock %> | Qty: <%= p.qty.toFixed(2) %> | Price: $<%= p.price.toFixed(2) %>
+        </li>
+      <% }) %>
+    </ul>
+
+  </div>
+
+</body>
+</html>
